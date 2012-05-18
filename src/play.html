@@ -41,7 +41,7 @@
                                         0.1,            // Near plane
                                         10000           // Far plane
                                     );
-        camera.position.set( -12, 10, 10 );
+        camera.position.set(0, 100, 100 );
         camera.lookAt( scene.position );
 
         scene.add( camera );
@@ -52,6 +52,30 @@
                             );
         scene.add( cube );
 
+    	var geometry = new THREE.Geometry();
+    	
+    	
+		for ( var i = 0; i < 10; i ++ ) {
+
+			var vertex = new THREE.Vector3();
+			vertex.x = Math.random() * 20 - 10;
+			vertex.y = Math.random() * 20 - 10;
+			vertex.z = Math.random() * 20 - 10;
+			geometry.vertices.push( vertex );
+		}
+		
+		//numbers of verticies in the arguments of the Face3 constructor!
+		geometry.faces.push( new THREE.Face3(0, 1, 2) );
+		geometry.faces.push( new THREE.Face3(1, 2, 3) );
+		geometry.faces.push( new THREE.Face3(4, 5, 6) );
+
+		//geometry.computeFaceNormals();
+		var goodMesh = new THREE.Mesh(
+				geometry,
+                new THREE.MeshBasicMaterial( { color: 0xFFFF00 } )
+            );
+	     scene.add( goodMesh);
+	     
         var light = new THREE.PointLight( 0xFFFF00 );
         light.position.set( 10, 0, 10 );
         scene.add( light );
@@ -62,7 +86,8 @@
 		stats.domElement.style.position = 'absolute';
 		stats.domElement.style.top = '0px';
 		document.body.appendChild( stats.domElement );
-		
+
+	
     };
 			
 		    
