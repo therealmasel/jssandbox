@@ -54,7 +54,7 @@
 
     	var geometry = new THREE.Geometry();
     	
-    	
+    	/*
 		for ( var i = 0; i < 10; i ++ ) {
 
 			var vertex = new THREE.Vector3();
@@ -64,10 +64,28 @@
 			geometry.vertices.push( vertex );
 		}
 		
+		*/
+    	var vertex = new THREE.Vector3();
+		vertex.x = 1;
+		vertex.y = 2;
+		vertex.z = 3;
+		geometry.vertices.push(vertex) ;
+		
+		var vertex = new THREE.Vector3();
+		vertex.x = 3;
+		vertex.y = 2;
+		vertex.z = 3;
+		geometry.vertices.push(vertex) ;
+		
+		var vertex = new THREE.Vector3();
+		vertex.x = 1;
+		vertex.y = 4;
+		vertex.z = 3;
+		geometry.vertices.push(vertex) ;
 		//numbers of verticies in the arguments of the Face3 constructor!
-		geometry.faces.push( new THREE.Face3(0, 1, 2) );
-		geometry.faces.push( new THREE.Face3(1, 2, 3) );
-		geometry.faces.push( new THREE.Face3(4, 5, 6) );
+		geometry.faces.push( new THREE.Face3(1, 2, 0) );
+		//geometry.faces.push( new THREE.Face3(1, 2, 3) );
+		//geometry.faces.push( new THREE.Face3(4, 5, 6) );
 
 		//geometry.computeFaceNormals();
 		var goodMesh = new THREE.Mesh(
