@@ -46,9 +46,21 @@
         }
   */      
   planeAsPlane = new THREE.PlaneGeometry( 300, 300, 20, 20 );
+  
+  planeAsPlane.dynamic = true;  
+       for (var i = 0; i < planeAsPlane.vertices.length; i++) {
+        planeAsPlane.vertices[i].x += Math.round(Math.random()*2);
+	planeAsPlane.vertices[i].y += Math.round(Math.random()*2);
+	planeAsPlane.vertices[i].x += Math.round(Math.random()*2);
+    }
+
+     planeAsPlane.__dirtyVertices = true;
+   planeAsPlane.computeCentroids();
+   planeAsPlane.computeVertexNormals();
+   
    plane = new THREE.Mesh( planeAsPlane, new THREE.MeshBasicMaterial( { color: 0x555555, wireframe: true } ) );
   
-  planeAsPlane.dynamic = true;
+  
   //console.log(planeAsPlane.faces.length);
   //console.log(plane.uvs.length);
   
@@ -140,15 +152,10 @@
     };
 		
     function onDocumentMouseClick(event) {
-    
-     for (var i = 0; i < planeAsPlane.vertices.length; i++) {
-        planeAsPlane.vertices[i].x +=5;
-    }
-
-    planeAsPlane.__dirtyVertices = true;
-  planeAsPlane.computeCentroids();
+   
   
       //console.log(planeAsPlane.vertices[24].x);
+      
       
     	console.log("clicked");
     	 var vector = new THREE.Vector3( mouse.x, mouse.y, 1 );
@@ -188,6 +195,9 @@
 
 			function render() {
 
+			
+  
+  
 				theta = 120;
 
 				camera.position.x = radius * Math.sin( theta * Math.PI / 360 );
