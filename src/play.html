@@ -7,133 +7,14 @@
 
     <script type="text/javascript" src="Three.js"></script>
     <script type="text/javascript" src="Stats.js"></script>
-    <script type="text/javascript" src ="myscript.js"></script>
 
 </head>
 
 <body>
 
-    <script>
-    var container, stats;
-	var camera, scene, projector, renderer;
-
-	var mouse = { x: 0, y: 0 }, INTERSECTED;
-	var radius = 100;
-	var theta = 0;
-	
-	init();
-	animate();
-
-	
-    
-    function init ()  {
-
-        renderer = new THREE.WebGLRenderer();
-        renderer.setSize( 800, 600 );
-        document.body.appendChild( renderer.domElement );
-
-
-        scene = new THREE.Scene();
-
-        camera = new THREE.PerspectiveCamera(
-                                        35,             // Field of view
-                                        800 / 600,      // Aspect ratio
-                                        0.1,            // Near plane
-                                        10000           // Far plane
-                                    );
-        camera.position.set(0, 100, 100 );
-        camera.lookAt( scene.position );
-
-        scene.add( camera );
-
-        var cube = new THREE.Mesh(
-                                new THREE.CubeGeometry( 5, 5, 5 ),
-                                new THREE.MeshLambertMaterial( { color: 0xFF0000 } )
-                            );
-        scene.add( cube );
-
-    	var geometry = new THREE.Geometry();
-    	
-    	/*
-		for ( var i = 0; i < 10; i ++ ) {
-
-			var vertex = new THREE.Vector3();
-			vertex.x = Math.random() * 20 - 10;
-			vertex.y = Math.random() * 20 - 10;
-			vertex.z = Math.random() * 20 - 10;
-			geometry.vertices.push( vertex );
-		}
+        <script type="text/javascript" src ="core.js"></script>
+  
 		
-		*/
-    	var vertex = new THREE.Vector3();
-		vertex.x = 1;
-		vertex.y = 2;
-		vertex.z = 3;
-		geometry.vertices.push(vertex) ;
-		
-		var vertex = new THREE.Vector3();
-		vertex.x = 3;
-		vertex.y = 2;
-		vertex.z = 3;
-		geometry.vertices.push(vertex) ;
-		
-		var vertex = new THREE.Vector3();
-		vertex.x = 1;
-		vertex.y = 4;
-		vertex.z = 3;
-		geometry.vertices.push(vertex) ;
-		//numbers of verticies in the arguments of the Face3 constructor!
-		geometry.faces.push( new THREE.Face3(1, 2, 0) );
-		//geometry.faces.push( new THREE.Face3(1, 2, 3) );
-		//geometry.faces.push( new THREE.Face3(4, 5, 6) );
-
-		//geometry.computeFaceNormals();
-		var goodMesh = new THREE.Mesh(
-				geometry,
-                new THREE.MeshBasicMaterial( { color: 0xFFFF00 } )
-            );
-	     scene.add( goodMesh);
-	     
-        var light = new THREE.PointLight( 0xFFFF00 );
-        light.position.set( 10, 0, 10 );
-        scene.add( light );
-
-        renderer.render( scene, camera );
-
-        stats = new Stats();
-		stats.domElement.style.position = 'absolute';
-		stats.domElement.style.top = '0px';
-		document.body.appendChild( stats.domElement );
-
-	
-    };
-			
-		    
-	        
-	        function animate() {
-
-				requestAnimationFrame( animate );
-
-				render();
-
-				stats.update();
-			}
-	        
-	        
-
-			function render() {
-
-				theta += 0.2;
-
-				camera.position.x = radius * Math.sin( theta * Math.PI / 360 );
-				camera.position.y = radius * Math.sin( theta * Math.PI / 360 );
-				camera.position.z = radius * Math.cos( theta * Math.PI / 360 );
-
-				camera.lookAt( scene.position );
-				renderer.render( scene, camera );
-			}
-	</script>
-	
 </body>
 
 </html>
