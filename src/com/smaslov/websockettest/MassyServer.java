@@ -1,4 +1,4 @@
-package websockettest;
+package com.smaslov.websockettest;
 
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.handler.DefaultHandler;

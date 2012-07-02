@@ -1,4 +1,4 @@
-package websockettest;
+package com.smaslov.websockettest;
 
 import java.io.IOException;
 import java.util.Set;
@@ -41,8 +41,7 @@ public class MassyWebSocketHandler extends WebSocketHandler {
 		public void onMessage(String arg0) {
 			try {
 				for (MassyWebSocket socket : websockets) {
-				    System.out.println(arg0);
-			    	socket.connection.sendMessage(arg0 + " answer");
+			    	socket.connection.sendMessage(arg0);
 			    }
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
