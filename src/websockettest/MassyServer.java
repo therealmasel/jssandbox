@@ -7,8 +7,8 @@ public class MassyServer {
 
 	public static void main(String[] args) {
 		Server server = new Server (8081);
-		MassyWebSocketHandler socketHandler = new
-				MassyWebSocketHandler();
+		MassyBinaryWebSocketHandler socketHandler = new
+				MassyBinaryWebSocketHandler();
 		socketHandler.setHandler(new DefaultHandler());
 		server.setHandler(socketHandler);
 		try {

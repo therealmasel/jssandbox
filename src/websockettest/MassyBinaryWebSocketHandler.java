@@ -28,6 +28,16 @@ public class MassyBinaryWebSocketHandler extends WebSocketHandler{
         public void onMessage(byte[] arg0, int arg1, int arg2) {
             try {
                 for (MassyBinaryWebSocket socket : websockets) {
+                    System.out.println("arg1=" + arg1);
+                    System.out.println("arg2=" + arg2);
+                    for (int i = 0 ; i< arg2; i++) {
+                        int v = arg1 + i;
+                        System.out.println("arg0[v]=" + arg0[v]);
+                        
+                        arg0[v] = 12;
+                        System.out.println("v=" + v);
+                    }
+                    
                     socket.connection.sendMessage(arg0, arg1, arg2);
                 }
             } catch (IOException e) {
